@@ -41,3 +41,9 @@
         components: { Conversation, ContactsList }
     }
 </script>
+
+<style lang="scss" scoped>
+    .chat-app {
+        display: flex;
+    }
+</style>

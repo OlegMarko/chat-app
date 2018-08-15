@@ -23,3 +23,16 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .composer {
+        textarea {
+            width: 96%;
+            margin: 10px;
+            resize: none;
+            border-radius: 3px;
+            border: 1px solid #a6a6a6;
+            padding: 6px;
+        }
+    }
+</style>

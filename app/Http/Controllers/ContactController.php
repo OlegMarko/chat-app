@@ -16,7 +16,7 @@ class ContactController extends Controller
 
     public function getMessageFor($id)
     {
-        $messages = Message::where('from', $id)->orWhere('to', auth()->id())->get();
+        $messages = Message::where('from', $id)->orWhere('to', $id)->get();
 
         return response()->json($messages);
     }
