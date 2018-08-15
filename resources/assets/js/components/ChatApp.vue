@@ -1,13 +1,13 @@
 <template>
     <div class="chat-app">
         <conversation :contact="selectedContact" :messages="messages"></conversation>
-        <contacts-list :contacts="contacts"></contacts-list>
+        <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
     </div>
 </template>
 
 <script>
     import Conversation from './Conversation';
-    import ConversationList from './ContactsList';
+    import ContactsList from './ContactsList';
 
     export default {
         props: {
@@ -29,6 +29,15 @@
                     this.contacts = response.data
                 })
         },
-        components: { Conversation, ConversationList }
+        methods: {
+            startConversationWith(contact) {
+                axios.get(`/conversation/${contact.id}`)
+                    .then(response => {
+                        this.messages = response.data;
+                        this.selectedContact = contact;
+                    });
+            }
+        },
+        components: { Conversation, ContactsList }
     }
 </script>
