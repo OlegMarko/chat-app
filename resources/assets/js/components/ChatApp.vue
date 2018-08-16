@@ -1,6 +1,6 @@
 <template>
     <div class="chat-app">
-        <conversation :contact="selectedContact" :messages="messages"></conversation>
+        <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessages"></conversation>
         <contacts-list :contacts="contacts" @selected="startConversationWith"></contacts-list>
     </div>
 </template>
@@ -36,6 +36,9 @@
                         this.messages = response.data;
                         this.selectedContact = contact;
                     });
+            },
+            saveNewMessages(text) {
+                this.messages.push(text);
             }
         },
         components: { Conversation, ContactsList }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use App\User;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -19,5 +20,16 @@ class ContactController extends Controller
         $messages = Message::where('from', $id)->orWhere('to', $id)->get();
 
         return response()->json($messages);
+    }
+
+    public function send(Request $request)
+    {
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to' => $request->contact_id,
+            'text' => $request->text
+        ]);
+
+        return response()->json($message);
     }
 }

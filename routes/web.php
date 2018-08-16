@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/contacts', 'ContactController@get');
 Route::get('/conversation/{id}', 'ContactController@getMessageFor');
+Route::post('/conversation/send', 'ContactController@send');
